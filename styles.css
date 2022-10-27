@@ -1,0 +1,17 @@
+body{
+  background-image: url(./images/background-image.jpg);
+  background-size: cover;
+  font-family: 'Rubik', sans-serif;
+}
+.card{
+  background-color: rgb(247, 178, 40,0.8);
+}
+
+@media (min-width: 2560px) { 
+  h1{
+    font-size: 8rem;
+  }
+  .btn{
+    font-size: 4rem;
+  }
+}
