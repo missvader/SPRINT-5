@@ -9,6 +9,7 @@ async function getJoke(){
   })
   const json = await result.json();
   resultJoke = json.joke;
-  console.log(resultJoke);
+  //console.log(resultJoke);
+  randomJoke.textContent = resultJoke;
 }
 btnJoke.addEventListener("click", getJoke);

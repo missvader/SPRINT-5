@@ -6,7 +6,7 @@ body{
 .card{
   background-color: rgb(247, 178, 40,0.8);
 }
-p{
+.card-text{
   font-size: 1.5rem;
 }
 
@@ -17,7 +17,10 @@ p{
   .btn{
     font-size: 4rem;
   }
-  p{
+  .card-text{
+    font-size: 5rem;
+  }
+  .weather{
     font-size: 5rem;
   }
 }
