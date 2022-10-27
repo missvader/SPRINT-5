@@ -12,7 +12,7 @@ async function getJoke(){
   //console.log(resultJoke);
   textJoke.textContent = resultJoke;
 }
-//create reportAcudits array anf rateJoke()
+//create reportAcudits array and rateJoke()
 let reportAcudits = [];
 function rateJoke(userScore){
   let randomJoke = {
@@ -23,4 +23,17 @@ function rateJoke(userScore){
   reportAcudits.push(randomJoke);
   console.log(reportAcudits);
 }
+//fetch OpenWeatherMap API
+let resultWeather;
+async function getWeather(){
+  const result = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Barcelona&appid=bee839bdd418af83edc24e9ea7b0e924&lang=ca&units=metric");
+  const json = await result.json();
+  resultWeather = json.weather[0].description;
+  let temp = Math.floor(json.main.temp);
+  let city = json.name;
+  console.log(resultWeather)
+  console.log(temp);
+  console.log(city);
+}
+getWeather();
 btnJoke.addEventListener("click", getJoke);
