@@ -9,7 +9,7 @@ async function getJoke(){
   })
   const json = await result.json();
   resultJoke = json.joke;
-  //console.log(resultJoke);
+  console.log(resultJoke);
   textJoke.textContent = resultJoke;
 }
 //create reportAcudits array and rateJoke()
@@ -22,6 +22,22 @@ function rateJoke(userScore){
   }
   reportAcudits.push(randomJoke);
   console.log(reportAcudits);
+}
+//fetch ChuckNorrisJokes API
+let resultChuck;
+async function getChuckJoke(){
+  const result = await fetch("https://api.chucknorris.io/jokes/random");
+  const json = await result.json();
+  resultChuck = json.value;
+  console.log(resultChuck);
+  textJoke.textContent = resultChuck;
+}
+//random number to fetch between APIS
+const fetchJoke = ()=> {
+  //get random number 1 to 10 and fetch aleatory API depending number
+  let randomNumber = Math.round(Math.random()*10);
+  console.log(randomNumber);
+  let randomJoke = (randomNumber > 5)? getChuckJoke() : getJoke();
 }
 //fetch OpenWeatherMap API
 let resultWeather;
@@ -36,4 +52,4 @@ async function getWeather(){
   console.log(city);
 }
 getWeather();
-btnJoke.addEventListener("click", getJoke);
+btnJoke.addEventListener("click", fetchJoke);
