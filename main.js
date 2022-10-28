@@ -17,11 +17,12 @@ async function getJoke(){
 //create reportAcudits array and rateJoke()
 let reportAcudits = [];
 function rateJoke(userScore){
-  let randomJoke = {
-    joke : resultJoke,
-    score : userScore,
-    date : new Date().toISOString()
-  }
+  
+    let randomJoke = {
+      joke : textJoke.textContent,
+      score : userScore,
+      date : new Date().toISOString()
+    }
   reportAcudits.push(randomJoke);
   console.log(reportAcudits);
 }
@@ -31,7 +32,7 @@ async function getChuckJoke(){
   const result = await fetch("https://api.chucknorris.io/jokes/random");
   const json = await result.json();
   resultChuck = json.value;
-  //console.log(resultChuck);
+  //console.log(resultJoke);
   textJoke.textContent = resultChuck;
 }
 //random number to fetch between APIS
