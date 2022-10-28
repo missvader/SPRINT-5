@@ -1,6 +1,8 @@
 //access DOM elements 
 const btnJoke = document.getElementById("btn-joke");
 const textJoke = document.getElementById("text-joke");
+const icon = document.getElementById("icon");
+const temperature = document.getElementById("temperature");
 //Fetch dadjoke API
 let resultJoke;
 async function getJoke(){
@@ -9,7 +11,7 @@ async function getJoke(){
   })
   const json = await result.json();
   resultJoke = json.joke;
-  console.log(resultJoke);
+  //console.log(resultJoke);
   textJoke.textContent = resultJoke;
 }
 //create reportAcudits array and rateJoke()
@@ -29,27 +31,27 @@ async function getChuckJoke(){
   const result = await fetch("https://api.chucknorris.io/jokes/random");
   const json = await result.json();
   resultChuck = json.value;
-  console.log(resultChuck);
+  //console.log(resultChuck);
   textJoke.textContent = resultChuck;
 }
 //random number to fetch between APIS
 const fetchJoke = ()=> {
   //get random number 1 to 10 and fetch aleatory API depending number
   let randomNumber = Math.round(Math.random()*10);
-  console.log(randomNumber);
+  //console.log(randomNumber);
   let randomJoke = (randomNumber > 5)? getChuckJoke() : getJoke();
 }
 //fetch OpenWeatherMap API
-let resultWeather;
+//let resultWeather;
 async function getWeather(){
   const result = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Barcelona&appid=bee839bdd418af83edc24e9ea7b0e924&lang=ca&units=metric");
   const json = await result.json();
-  resultWeather = json.weather[0].description;
+  let iconWeather = json.weather[0].icon;
   let temp = Math.floor(json.main.temp);
-  let city = json.name;
-  console.log(resultWeather)
+  console.log(iconWeather)
   console.log(temp);
-  console.log(city);
+  icon.src= `http://openweathermap.org/img/w/${iconWeather}.png`;
+  temperature.innerHTML = temp + "° C"
 }
-getWeather();
+window.addEventListener("load", getWeather);
 btnJoke.addEventListener("click", fetchJoke);
